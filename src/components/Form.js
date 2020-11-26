@@ -4,7 +4,8 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            message: '',
+            length: 0
         }
     }
 
@@ -28,7 +29,14 @@ class Form extends Component {
 
     handleChange = (event) => {
         const message = event.target.value;
-        this.setState({ message });
+        const length = message.length;
+        this.setState({ message, length });
+    }
+
+    handleKeyUp = (event) => {
+        if(event.key === "Enter") {
+            this.createMessage();
+        }
     }
 
     render() {
@@ -39,9 +47,10 @@ class Form extends Component {
                     required
                     onChange={this.handleChange}
                     value={this.state.message}
+                    onKeyUp={this.handleKeyUp}
                 />
                 <div className="info">
-                    0 / 140
+                    {this.state.length} / 140
                 </div>
                 <button type="submit">Envoyer !</button>
             </form>
