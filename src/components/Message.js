@@ -10,7 +10,7 @@ class Message extends Component {
 
     render() {
         return(
-            <p className="user-message">Mon message</p>
+            <p className="user-message"><b>{ this.props.pseudo } : </b>{ this.props.message }</p>
         )
     }
 }
