@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Message extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    render() {
+const Message = ({ pseudo, message, isUser }) => {
+    if(isUser(pseudo)) {
         return(
-            <p className="user-message"><b>{ this.props.pseudo } : </b>{ this.props.message }</p>
+            <p className="user-message"><b>{pseudo} : </b>{message}</p>
+        )
+    } else {
+        return(
+            <p className="not-user-message"><b>{pseudo} : </b>{message}</p>
         )
     }
 }

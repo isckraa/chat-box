@@ -19,7 +19,7 @@ class Form extends Component {
         addMessage(message);
 
         // Reset
-        this.setState({ message: '' })
+        this.setState({ message: '', length: 0 })
     }
 
     handleSubmit = (event) => {

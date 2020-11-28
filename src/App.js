@@ -41,6 +41,8 @@ class App extends Component {
       })
     this.setState({ messages });
   }
+
+  isUser = pseudo => pseudo === this.state.pseudo
   
   render () {
     const messages = Object
@@ -50,6 +52,7 @@ class App extends Component {
           key={key}
           message={this.state.messages[key].message}
           pseudo={this.state.messages[key].pseudo}
+          isUser={this.isUser}
         />
       ));
 
