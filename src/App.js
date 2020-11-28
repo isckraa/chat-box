@@ -3,6 +3,9 @@ import './App.css';
 import Form from './components/Form';
 import Message from './components/Message';
 
+// Firebase
+import firebaseApp from './utils/firebase';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +13,13 @@ class App extends Component {
       messages: {},
       pseudo: this.props.match.params.pseudo
     }
+  }
+
+  componentDidMount() {
+    firebaseApp.syncState('/', {
+      context: this,
+      state: 'messages'
+    });
   }
 
   addMessage = (message) => {
