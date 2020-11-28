@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { createClass } from 're-base';
+import React, { Component, createRef  } from 'react';
 import './App.css';
 import Form from './components/Form';
 import Message from './components/Message';
@@ -15,11 +16,18 @@ class App extends Component {
     }
   }
 
+  messagesRef = createRef();
+
   componentDidMount() {
     firebaseApp.syncState('/', {
       context: this,
       state: 'messages'
     });
+  }
+
+  componentDidUpdate() {
+    const ref = this.messagesRef.current;
+    ref.scrollTop = ref.scrollHeight;
   }
 
   addMessage = (message) => {
@@ -38,11 +46,10 @@ class App extends Component {
           pseudo={this.state.messages[key].pseudo}
         />
       ));
-    console.log( messages )
 
     return (
       <div className='box'>
-        <div className="messages">
+        <div className="messages" ref={this.messagesRef}>
           <div className="message">
             { messages }
           </div>
