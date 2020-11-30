@@ -1,7 +1,7 @@
-const database = {
+const firebaseConfig = {
     apiKey: "...",
     authDomain: "...",
     databaseURL: "...",
 };
 
-export default database;
+export default firebaseConfig;
